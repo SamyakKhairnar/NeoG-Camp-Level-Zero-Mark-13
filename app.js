@@ -4,30 +4,35 @@ var message = document.querySelector("#message");
 var privButton = document.querySelector("#check-priv");
 var nextButton = document.querySelector("#check-next");
 
+var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
 privButton.style.display = "none";
 nextButton.style.display = "none";
 
 
 checkButton.addEventListener("click", function clickHandler(){
+    privButton.style.display = "none";
+    nextButton.style.display = "none";
 
     var bdayStr = inputDate.value;
   
     if(bdayStr !== ''){
+        message.innerText="";
         var listOfDate = bdayStr.split('-');
-
         var date = {
         day: Number(listOfDate[2]),
         month: Number(listOfDate[1]),
         year: Number(listOfDate[0])
         };
-        message.innerText="";
-        console.log(date);
         var isPalindrome = checkPalindromeForAllDateFormats(date);
 
         if(isPalindrome){
-            message.innerText = "Yay! Your Birthday is a Palindrome!! 🥳🥳";
+            message.innerText = "Yo ! Your Birthday is a Palindrome !! 🥳🥳";
         }else {
             message.innerText = "Oh No ! Your Birthday is Not Palindrome 😔";
+
+            privButton.style.display = "inline";
+            nextButton.style.display = "inline";
         }
     }else{
         message.innerText = "Select Date of Birth to Proceed";
@@ -98,5 +103,90 @@ function reverseStr(str) {
 }
 
 
+nextButton.addEventListener("click", function  nextClickHandler(){
+
+    var bdayStr = inputDate.value;
+    var listOfDate = bdayStr.split('-');
+    var date = {
+        day: Number(listOfDate[2]),
+        month: Number(listOfDate[1]),
+        year: Number(listOfDate[0])
+    };
+    var [ctr, nextDate] = getNextPalindromeDate(date);
+    
+    message.innerText = "The Next Palindrome Date is "+nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" !" ;
+});
+
+function isLeapYear(year){
+    if(year % 400 === 0){
+      return true;
+    }
+    if(year % 100 === 0){
+      return false;
+    }
+    if(year % 4 === 0){
+      return true;
+    }
+    return false;
+  }
+  
+  
+function getNextDate(date){
+    var day = date.day + 1;  
+    var month = date.month;
+    var year = date.year;
+  
+    if(month === 2){ 
+      
+      if(isLeapYear(year)){
+         if(day > 29){ 
+           day = 1;
+           month++;
+         }
+      }
+      else {
+         if(day > 28){
+           day = 1;
+           month++;
+         }
+      }
+    }
+    
+    else {
+      
+      if(day > daysInMonth[month - 1]){ 
+        day = 1; 
+        month++;
+      }
+    }
+  
+   
+    if(month > 12){
+      month = 1;
+      year++; 
+    }
+  
+    return {
+      day: day,  
+      month: month,
+      year: year
+    };
+}
+  
+
+function getNextPalindromeDate(date){
+    var ctr = 0;
+    var nextDate = getNextDate(date);
+  
+    while(1){
+      ctr++;
+      var isPalindrome = checkPalindromeForAllDateFormats(nextDate);
+      if(isPalindrome){
+        break;
+      }
+      nextDate = getNextDate(nextDate);
+    }
+    return [ctr, nextDate];
+}
 
   
