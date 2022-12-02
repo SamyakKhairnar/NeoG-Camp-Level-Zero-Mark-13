@@ -1,0 +1,95 @@
+
+.container{
+    height: 40vw;
+    width: 45vw;
+    margin: auto;
+    text-align: center;
+    border: 2px solid black;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 1rem;
+    background-color: #f7fee7;
+}
+h1{
+    color: #bbf7d0;
+    font-size: 4rem;
+    text-shadow: 2px 2px 2px #15803d,-2px -2px 2px #15803d;
+}
+label{
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+input{
+    display: block;
+    font-size: 1.4rem;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+button{
+    background-color: #bbf7d0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s all;
+    color: #15803d;
+    border: 3px solid #15803d;    
+}
+button:hover{
+    background-color: #15803d;
+    color: #bbf7d0;
+    border: 3px solid #bbf7d0;
+}
+button:active{
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+
+
+
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: #15803d;
+    justify-content: center;
+
+  }
+  .footer p{
+    margin-top: 1rem;
+    margin-bottom: auto;
+    color: #bbf7d0;
+    font-size: 1rem;
+    text-align: center;
+  }
+ 
+  .list-non-bullet {
+    list-style: none;
+    padding-inline-start: 0px;
+    text-align: center;
+
+  }
+  
+  .list-item-inlines {
+    display: inline-block;
+    width: 2rem;
+    margin: auto;
+  }
+ 
+  .links .fa-brands{
+    color: #bbf7d0;
+    font-size: 1.2rem;
+    transition: .2s;
+  }
+  .links .fa-brands:hover {
+    color: lime;
+  }
