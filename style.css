@@ -97,3 +97,12 @@ h2{
   .links .fa-brands:hover {
     color: red;
   }
+
+  @media only screen and (max-width: 650px) {
+    .container {
+      width: 100%;
+    }
+    .btn{
+          width: 40%;
+      }
+  }
