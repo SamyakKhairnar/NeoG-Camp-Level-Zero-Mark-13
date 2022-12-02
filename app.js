@@ -103,6 +103,7 @@ function reverseStr(str) {
 }
 
 
+
 nextButton.addEventListener("click", function  nextClickHandler(){
 
     var bdayStr = inputDate.value;
@@ -115,6 +116,24 @@ nextButton.addEventListener("click", function  nextClickHandler(){
     var [ctr, nextDate] = getNextPalindromeDate(date);
     
     message.innerText = "The Next Palindrome Date is "+nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" !" ;
+});
+
+privButton.addEventListener("click", function privClickHandler(){
+
+    var bdayStr = inputDate.value;
+    var listOfDate = bdayStr.split('-');
+    var date = {
+        day: Number(listOfDate[2]),
+        month: Number(listOfDate[1]),
+        year: Number(listOfDate[0])
+    };
+
+    var [ctr, privDate] = getPrivPalindromeDate(date);
+    
+    message.innerText = "The Previous Palindrome Date was "+privDate.day+"-"+privDate.month+"-"+privDate.year+" !" ;
+
+
+
 });
 
 function isLeapYear(year){
@@ -172,7 +191,6 @@ function getNextDate(date){
       year: year
     };
 }
-  
 
 function getNextPalindromeDate(date){
     var ctr = 0;
@@ -187,6 +205,52 @@ function getNextPalindromeDate(date){
       nextDate = getNextDate(nextDate);
     }
     return [ctr, nextDate];
+}
+
+function getPreviousDate(date) {
+    var day = date.day - 1;
+    var month = date.month;
+    var year = date.year;
+  
+    if (day === 0) {
+      month--;
+  
+      if (month === 0) {
+        month = 12;
+        day = 31;
+        year--;
+      } else if (month === 2) {
+        if (isLeapYear(year)) {
+          day = 29;
+        } else {
+          day = 28;
+        }
+      } else {
+        day = daysInMonth[month - 1];
+      }
+    }
+  
+    return {
+      day: day,
+      month: month,
+      year: year,
+    };
+}
+
+
+function getPrivPalindromeDate(date){
+    var ctr = 0;
+    var privDate = getPreviousDate(date);
+  
+    while(1){
+      ctr++;
+      var isPalindrome = checkPalindromeForAllDateFormats(privDate);
+      if(isPalindrome){
+        break;
+      }
+      privDate = getPreviousDate(privDate);
+    }
+    return [ctr, privDate];
 }
 
   
