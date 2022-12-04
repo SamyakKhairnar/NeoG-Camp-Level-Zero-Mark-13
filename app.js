@@ -115,7 +115,7 @@ nextButton.addEventListener("click", function  nextClickHandler(){
     };
     var [ctr, nextDate] = getNextPalindromeDate(date);
     
-    message.innerText = "The Next Palindrome Date is "+nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" !" ;
+    message.innerText = "The Next Palindrome Date is "+nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" !\n You have to Wait "+ctr+" Days !" ;
 });
 
 privButton.addEventListener("click", function privClickHandler(){
@@ -130,7 +130,7 @@ privButton.addEventListener("click", function privClickHandler(){
 
     var [ctr, privDate] = getPrivPalindromeDate(date);
     
-    message.innerText = "The Previous Palindrome Date was "+privDate.day+"-"+privDate.month+"-"+privDate.year+" !" ;
+    message.innerText = "The Previous Palindrome Date was "+privDate.day+"-"+privDate.month+"-"+privDate.year+" !\n You Missed it by "+ctr+" Days !" ;
 
 
 
