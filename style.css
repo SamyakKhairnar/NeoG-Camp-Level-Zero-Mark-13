@@ -100,9 +100,24 @@ h2{
 
   @media only screen and (max-width: 650px) {
     .container {
-      width: 90%;
+      width: 80%;
+    }
+    h1{
+      font-size: xx-large;
+      text-shadow: 1px 1px 4px #15803d,-1px -1px 4px #15803d;
+    }
+    label{
+      font-size: larger;
+    }
+    input{
+      font-size: larger;
     }
     .btn{
-          width: 40%;
-      }
+      font-size: larger;
+      width: auto;
+      padding: 2px 5px;
+    }
+    h2{
+      font-size: larger;
+    }
   }
